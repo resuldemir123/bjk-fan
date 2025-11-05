@@ -1,0 +1,383 @@
+/* about.css */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid #000;
+  position: relative;
+}
+
+.about-header::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #000 0%, #000 50%, #fff 50%, #fff 100%);
+  background-size: 20px 100%;
+}
+
+.about-header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about-header p {
+  font-size: 1.2rem;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #f5f5f5;
+  padding: 5px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  color: #555;
+  outline: none;
+}
+
+.tab-button:hover {
+  color: #000;
+}
+
+.tab-button.active {
+  background-color: #000;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tab-content {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  margin-top: 1rem;
+}
+
+/* Timeline Styling */
+.timeline {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.timeline h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  color: #000;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 100px;
+  bottom: 100px;
+  left: 50%;
+  width: 4px;
+  background: linear-gradient(to bottom, #000, #333, #000);
+  transform: translateX(-50%);
+}
+
+.timeline-event {
+  position: relative;
+  margin-bottom: 80px;
+  width: 50%;
+}
+
+.timeline-event.left {
+  left: 0;
+  padding-right: 40px;
+}
+
+.timeline-event.right {
+  left: 50%;
+  padding-left: 40px;
+}
+
+.timeline-event-content {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+  border-left: 4px solid #000;
+}
+
+.timeline-event.right .timeline-event-content {
+  border-left: none;
+  border-right: 4px solid #000;
+}
+
+.timeline-event-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-event-content::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.timeline-event.left .timeline-event-content::before {
+  right: -50px;
+  top: 20px;
+}
+
+.timeline-event.right .timeline-event-content::before {
+  left: -50px;
+  top: 20px;
+}
+
+.timeline-event.left .timeline-event-content::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #f9f9f9;
+}
+
+.timeline-event.right .timeline-event-content::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #f9f9f9;
+}
+
+.timeline-event-content h3 {
+  font-size: 1.8rem;
+  color: #000;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.timeline-event-content h4 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-event-content p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Legends Styling */
+.legends-grid h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  color: #000;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.legends-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.legend-card {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.legend-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.legend-image-container {
+  height: 220px;
+  overflow: hidden;
+}
+
+.legend-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.legend-card:hover .legend-image {
+  transform: scale(1.1);
+}
+
+.legend-info {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.legend-info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  color: #000;
+  font-weight: 700;
+}
+
+.legend-role {
+  font-size: 0.9rem;
+  color: #777;
+  font-weight: 600;
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.legend-role::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: #000;
+}
+
+.legend-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-header h1 {
+    font-size: 2.3rem;
+  }
+  
+  .timeline-line {
+    left: 20px;
+  }
+  
+  .timeline-event {
+    width: 100%;
+    left: 0;
+    padding-left: 40px;
+    padding-right: 0;
+  }
+  
+  .timeline-event.left .timeline-event-content::before,
+  .timeline-event.right .timeline-event-content::before {
+    left: -40px;
+    top: 20px;
+  }
+  
+  .timeline-event.left .timeline-event-content::after,
+  .timeline-event.right .timeline-event-content::after {
+    left: -10px;
+    border-right: 10px solid #f9f9f9;
+    border-left: none;
+  }
+  
+  .legends-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .tab-button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .tab-content {
+    padding: 1.5rem;
+  }
+  
+  .timeline-event-content h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Beşiktaş Animation Effects */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.timeline-event-content:hover::before {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.legend-card {
+  animation: fadeInUp 0.6s ease forwards;
+}

@@ -1,0 +1,186 @@
+/* Beşiktaş JK Loading Screen - Enhanced Version */
+
+/* Ana yükleme ekranı */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 70%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+  }
+  
+  /* Logo konteyner ve animasyonlu logo */
+  .logo-container {
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  .logo-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+  }
+  
+  .logo-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: -2;
+    animation: rotate 10s linear infinite;
+  }
+  
+  .logo-container img {
+    width: 260px;
+    height: auto;
+    animation: pulse-and-glow 3s infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.7));
+    transition: all 0.5s ease;
+  }
+  
+  /* Yükleme çubuğu */
+  .loading-bar {
+    width: 300px;
+    height: 6px;
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  
+  .loading-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #ffffff, #cccccc);
+    animation: progress 2s ease-in-out forwards;
+    border-radius: 8px;
+  }
+  
+  /* Yükleme metni */
+  .loading-text {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 25px;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  .loading-dots {
+    display: inline-block;
+    animation: dots 1.5s infinite;
+    width: 30px;
+  }
+  
+  /* Animasyonlar */
+  @keyframes pulse-and-glow {
+    0% {
+      opacity: 0.8;
+      transform: scale(0.95);
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.9));
+    }
+    100% {
+      opacity: 0.8;
+      transform: scale(0.95);
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+  }
+  
+  @keyframes progress {
+    0% {
+      width: 0%;
+    }
+    50% {
+      width: 70%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  @keyframes dots {
+    0% { content: '.'; }
+    33% { content: '..'; }
+    66% { content: '...'; }
+    100% { content: '.'; }
+  }
+  
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+  
+  /* Ana içerik stillemesi */
+  .main-content {
+    min-height: calc(100vh - 120px);
+    padding: 20px;
+  }
+  
+  /* Beşiktaş'ın siyah-beyaz renkleri */
+  :root {
+    --bjk-black: #000000;
+    --bjk-white: #ffffff;
+    --bjk-gray: #f2f2f2;
+    --bjk-accent: #e30613;
+  }
+  
+  /* Medya sorguları - responsive tasarım */
+  @media (max-width: 768px) {
+    .logo-container img {
+      width: 200px;
+    }
+    
+    .loading-bar {
+      width: 80%;
+      max-width: 300px;
+    }
+    
+    .loading-text {
+      font-size: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .logo-container img {
+      width: 160px;
+    }
+    
+    .loading-text {
+      font-size: 18px;
+    }
+  }
