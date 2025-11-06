@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../styles/header.css';
 
-function Header() {
+function Header({ isAuthenticated, user, onLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -54,19 +54,10 @@ function Header() {
             </div>
           </Link>
         </motion.div>
-        
-        <button 
-          className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
-          onClick={toggleMenu}
-          aria-label="Menüyü aç/kapat"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        
+
+        {/* Ana navigasyon menüsü - logo yakınında */}
         <nav className={`main-nav ${isMenuOpen ? 'open' : ''}`}>
-          <ul>
+          <ul className="nav-links">
             {navItems.map((item, index) => (
               <motion.li 
                 key={item.path}
@@ -80,12 +71,62 @@ function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <i className={`fas ${item.icon}`}></i>
-                  {item.label}
+                  <span>{item.label}</span>
                 </Link>
               </motion.li>
             ))}
           </ul>
         </nav>
+
+        {/* Auth butonları - sağ üstte */}
+        <div className="auth-section">
+          {isAuthenticated ? (
+            <div className="user-menu">
+              <div className="user-info">
+                <i className="fas fa-user-circle"></i>
+                <span className="username">{user?.username || user?.firstName}</span>
+              </div>
+              <button 
+                className="logout-btn"
+                onClick={onLogout}
+                title="Çıkış Yap"
+              >
+                <i className="fas fa-sign-out-alt"></i>
+                <span>Çıkış</span>
+              </button>
+            </div>
+          ) : (
+            <div className="auth-buttons">
+              <Link 
+                to="/login" 
+                className="login-btn"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <i className="fas fa-sign-in-alt"></i>
+                <span>Giriş Yap</span>
+              </Link>
+              <Link 
+                to="/register" 
+                className="register-btn"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <i className="fas fa-user-plus"></i>
+                <span>Kayıt Ol</span>
+              </Link>
+            </div>
+          )}
+        </div>
+        
+        {/* Mobile menu toggle */}
+        <button 
+          className={`menu-toggle ${isMenuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Menüyü aç/kapat"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </motion.header>
   );
